@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -340,11 +339,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // округлення результату обчислень для зменшення довжини рядка на екрані калькулятора
     private String numberRounding(String numberInString) {
         if (numberInString.length() > maxLengthStringOnScreen && numberInString.contains("E")) {
-            Toast.makeText(this, numberInString, Toast.LENGTH_SHORT).show();
             BigDecimal bd = new BigDecimal(numberInString.substring(0, numberInString.indexOf("E")));
-            Toast.makeText(this, bd.toString(), Toast.LENGTH_SHORT).show();
             bd = bd.setScale(5, RoundingMode.UP);
-            Toast.makeText(this, bd.toString(), Toast.LENGTH_SHORT).show();
             return bd.toString() + numberInString.substring(numberInString.indexOf("E"));
         }
         return numberInString;
